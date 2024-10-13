@@ -47,13 +47,13 @@ class NyaoDirector
       remaining_h -= b.h
       if remaining_h > -1
         Ex.sp b.path
+        remaining_h -= b.h
       else
         remaining_h = h - b.h
         Ex.vert "vert botright split #{b.path}"
         window_columns << []
       end
       window_columns.last << Window.new(Ev.winnr, b.h)
-      remaining_h = h - b.h
       Ex.normal! "zE"
       Ex["1,#{b.fl-1}fold"]
       Ex["#{b.ll+1},$fold"]
