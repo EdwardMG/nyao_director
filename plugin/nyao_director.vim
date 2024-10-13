@@ -41,7 +41,7 @@ class NyaoDirector
     remaining_h = h - ft.h
     Ex["1,#{ft.fl-1}fold"]
     Ex["#{ft.ll+1},$fold"]
-    Ex.normal! "#{ft.fl}ggzt"
+    Ex.normal! "#{ft.fl}ggztzs"
     blocks[1..].each do |b|
       raise "#{b.path} doesn't exist." unless File.exist? b.path
       remaining_h -= b.h
@@ -57,16 +57,16 @@ class NyaoDirector
       Ex.normal! "zE"
       Ex["1,#{b.fl-1}fold"]
       Ex["#{b.ll+1},$fold"]
-      Ex.normal! "#{b.fl}ggzt"
+      Ex.normal! "#{b.fl}ggztzs"
     end
     window_columns.each do |ws|
       ws[..-2].each do |w|
         Ex["#{w.id}wincmd w"]
         Ex.resize w.h
-        Ex.normal! "zt"
+        Ex.normal! "ztzs"
       end
       Ex["#{ws.last.id}wincmd w"]
-      Ex.normal! "zt"
+      Ex.normal! "ztzs"
     end
   end
 end
