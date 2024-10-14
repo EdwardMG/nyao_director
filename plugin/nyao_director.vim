@@ -73,8 +73,10 @@ end
 RUBY
 endfu
 
-vno <nowait> \d :ruby NyaoDirector.global.add_block<CR>
-nno <nowait> \d :ruby NyaoDirector.global.show<CR>
-nno <nowait> \r :ruby NyaoDirector.global.reset<CR>
+if exists('g:nyao_always_add_mappings') && g:nyao_always_add_mappings
+  vno <nowait> \d :ruby NyaoDirector.global.add_block<CR>
+  nno <nowait> \d :ruby NyaoDirector.global.show<CR>
+  nno <nowait> \r :ruby NyaoDirector.global.reset<CR>
+endif
 
 call s:setup()
