@@ -39,12 +39,11 @@ class NyaoDirector
     h = Ev.winheight(Ev.winnr) - 2
     w = Ev.winwidth(Ev.winnr)
     remaining_h = h - ft.h
-    Ex["se foldmethod=manual"]
-    Ex.normal! "zE"
-    Ex["1,#{ft.fl-1}fold"]
-    Ex["#{ft.ll+1},$fold"]
-    Ex.normal! "#{ft.fl}ggztzs"
-    Ex.normal! "zM"
+    Ex.set "foldmethod=manual"
+    N.zE
+    Rex.fold 1, ft.fl-1
+    Rex.fold ft.ll+1, '$'
+    N["#{ft.fl}ggztzszM"]
     blocks[1..].each do |b|
       raise "#{b.path} doesn't exist." unless File.exist? b.path
       remaining_h -= b.h
@@ -56,21 +55,20 @@ class NyaoDirector
         window_columns << []
       end
       window_columns.last << Window.new(Ev.winnr, b.h)
-      Ex["se foldmethod=manual"]
-      Ex.normal! "zE"
-      Ex["1,#{b.fl-1}fold"]
-      Ex["#{b.ll+1},$fold"]
-      Ex.normal! "#{b.fl}ggztzs"
-      Ex.normal! "zM"
+      Ex.set "foldmethod=manual"
+      N.zE
+      Rex.fold 1, b.fl-1
+      Rex.fold b.ll+1, '$'
+      N["#{b.fl}ggztzszM"]
     end
     window_columns.each do |ws|
       ws[..-2].each do |w|
-        Ex["#{w.id}wincmd w"]
+        Rex1.wincmd w.id, 'w'
         Ex.resize w.h
-        Ex.normal! "ztzs"
+        N.ztzs
       end
-      Ex["#{ws.last.id}wincmd w"]
-      Ex.normal! "ztzs"
+      Rex1.wincmd ws.last.id, 'w'
+      N.ztzs
     end
     Ex.redraw!
   end
