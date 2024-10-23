@@ -43,7 +43,7 @@ class NyaoDirector
     N.zE
     Rex.fold 1, ft.fl-1
     Rex.fold ft.ll+1, '$'
-    N["#{ft.fl}ggztzszM"]
+    N.ggztzszM ft.fl
     blocks[1..].each do |b|
       raise "#{b.path} doesn't exist." unless File.exist? b.path
       remaining_h -= b.h
@@ -59,7 +59,7 @@ class NyaoDirector
       N.zE
       Rex.fold 1, b.fl-1
       Rex.fold b.ll+1, '$'
-      N["#{b.fl}ggztzszM"]
+      N.ggztzszM b.fl
     end
     window_columns.each do |ws|
       ws[..-2].each do |w|
